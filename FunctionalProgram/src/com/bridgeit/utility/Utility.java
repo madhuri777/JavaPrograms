@@ -104,7 +104,7 @@ public class Utility {
 	}
 
 	public static int leapYearMethod(int year) {
-		boolean flag = false;
+		int year1=year;
 		int digit = 0;
 		while (year > 0) {
 			int r = year % 10;
@@ -112,21 +112,11 @@ public class Utility {
 			year = year / 10;
 		}
 		if (digit == 4) {
-			if (year % 400 == 0) {
-				int n=year%400;
-				flag = true;
-			} else if (year % 100 == 0) {
-				flag = false;
-			} else if (year % 4 == 0) {
-				flag = true;
-			} else {
-				flag = false;
-			}
-			if (flag) {
-				System.out.println("this is leap year:");
-			}
-
-		} else {
+			if (year1 % 400 == 0||year1%4==0&&year1%100!=0) 
+				System.out.println(year1+" is leap year");
+			else 
+				System.out.println(year1+" is not leap year");
+		}else {
 			System.out.println("please enter 4digit year:");
 		}
 

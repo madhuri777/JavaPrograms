@@ -16,11 +16,11 @@ public class StopWatch {
 		System.out.println("enter any one number");
 		int N=un.inputInteger();
 		for(int i=0;i<N;i++) {
-		 sum=sum+i;	
-		 System.out.println(sum);
+		sum=sum+i;	
+		// System.out.println(sum);
 		}
 		//System.out.println(sum);
-		System.out.println(Utility.elapseTime( start1));
+		System.out.println("elapse time is:"+Utility.elapseTime( start1));
 	}
 
 }

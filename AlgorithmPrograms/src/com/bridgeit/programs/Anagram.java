@@ -13,10 +13,10 @@ public class Anagram {
 		case 1:
 		     System.out.println("Enter the two String:");
 		     //String s1=utility.inputString();
-		     String s1=sc.nextLine();
+		     String s1="heart";//sc.nextLine();
 		     //System.out.println("");
 		     //String s2=utility.inputString();
-		     String s2=sc.nextLine();
+		     String s2="E arth";//sc.nextLine();
 		     Utility.checkAnagramProgram(s1,s2);
 		     break;
 		case 2:

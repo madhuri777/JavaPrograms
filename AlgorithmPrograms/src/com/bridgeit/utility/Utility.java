@@ -43,8 +43,10 @@ public class Utility {
 	 * @param h
 	 */
 	public static void checkAnagramProgram(String s1,String s2) {
-		String str=s1.replace("\\s","");
-		String str2=s2.replace("\\s","");
+		String str=s1.replace(" ","");
+		System.out.println(str);
+		String str2=s2.replace(" ","");
+		System.out.println(str2);
 		boolean flag=true;
 		if(str.length()!=str2.length()) {
 			flag=false;
@@ -175,7 +177,7 @@ public static void decimalToBinary(int no) {
 	//System.out.println(i);
 	int l=i;
 	System.out.print("binary number"+"=");
-	for(j=i-1;j>0;j--) {
+	for(j=i-1;j>=0;j--) {
 		System.out.print(array[j]);
 	}
 	System.out.println("");

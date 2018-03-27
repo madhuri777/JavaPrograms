@@ -9,8 +9,9 @@ public class NibblesProgram {
       //System.out.println("enter the value");
       System.out.println("ENter the any number:");
       int n0=utility.inputInteger();
+      String str=Integer.toBinaryString(n0);
      Utility.nibbleBinaryProgram(n0);
-      
+      Utility.swapping();
 	}
 
 }
