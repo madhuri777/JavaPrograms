@@ -10,7 +10,7 @@ public class OrderedList {
 
 	public static void main(String[] args)throws Exception {
 		Utility utility=new Utility();
-		LinkedList1 list= new LinkedList1();
+		LinkedList1 <Integer>list= new LinkedList1();
      Scanner sc=new Scanner(new FileReader("orderlist.txt"));
     
      int i=0;
@@ -35,12 +35,12 @@ public class OrderedList {
 	list.show();
 	System.out.println("Enter the any value:");
 	int value=utility.inputInteger();
-	boolean flag=list.search(value);
-	if(flag) {
-		list.sortedRemove(value);
+	int flag=list.search(value);
+	if(flag==0) {
+		list.sortedAdd(value,i);
 	}else
-		list.sortedAdd(value);
-		
+		list.remove(value,flag);
+		list.show();
 	}
 
 }

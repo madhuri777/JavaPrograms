@@ -2,6 +2,7 @@ package com.bridgeit.programs;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 import com.bridgeit.utility.LinkedList1;
@@ -11,7 +12,7 @@ public class UnOrderedList1 {
 
 	public static void main(String[] args) throws Exception {
 		Utility utility=new Utility();
-		LinkedList1 list=new LinkedList1();
+		LinkedList1<String> list=new LinkedList1<String>();
 		
 		Scanner sc=new Scanner(new FileReader("www.txt"));
 		
@@ -29,13 +30,17 @@ public class UnOrderedList1 {
 		System.out.println("Enter the search key:");
 		String item=utility.inputString();
 		
-		boolean flage=list.search(item);
-		if(flage==true) {
-			list.remove(item);
-		}else {
+		int flage=list.search(item);
+		if(flage==0) {
 			list.add(item);
+		}else {
+			list.remove(item,flage);
 		}
 		list.show();
+		FileWriter fw=new FileWriter("www.txt");
+		fw.write(list.toString());
+		fw.flush();
+		fw.close();
 	}
 
 }

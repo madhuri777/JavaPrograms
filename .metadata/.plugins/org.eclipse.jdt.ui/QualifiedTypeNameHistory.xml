@@ -3,7 +3,7 @@
 <fullyQualifiedTypeName name="com.bridgeit.utility.LinkedList1"/>
 <fullyQualifiedTypeName name="com.bridgeit.utility.Stack"/>
 <fullyQualifiedTypeName name="com.bridgeit.utility.Queue1"/>
-<fullyQualifiedTypeName name="com.bridgeit.utility.Utility"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.bridgeit.utility.Utility"/>
 </qualifiedTypeNameHistroy>

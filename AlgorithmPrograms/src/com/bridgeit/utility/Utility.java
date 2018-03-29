@@ -175,7 +175,7 @@ public static void decimalToBinary(int no) {
 		no=no/2;
 	} 
 	//System.out.println(i);
-	int l=i;
+	//int l=i;
 	System.out.print("binary number"+"=");
 	for(j=i-1;j>=0;j--) {
 		System.out.print(array[j]);
@@ -206,7 +206,7 @@ public static void decimalToBinary(int no) {
  public static void nibbleBinaryProgram(int no) {
 	 int[] array=new int[20];
 		int i=0,j;
-		int temp=no;
+		//int temp=no;
 		while(no>0) {
 		int r=no%2;
 		   array[i++]=r;
