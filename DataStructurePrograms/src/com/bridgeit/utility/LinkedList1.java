@@ -87,6 +87,8 @@ public class LinkedList1<T> {
 		  pre.next=newnode;
 		  }
 	  }
+  
+   }
    
    
-}
+

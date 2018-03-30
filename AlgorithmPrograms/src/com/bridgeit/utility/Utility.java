@@ -174,12 +174,11 @@ public static void decimalToBinary(int no) {
 	   array[i++]=r;
 		no=no/2;
 	} 
-	//System.out.println(i);
-	//int l=i;
 	System.out.print("binary number"+"=");
 	for(j=i-1;j>=0;j--) {
 		System.out.print(array[j]);
 	}
+	System.out.println("is i"+i);
 	System.out.println("");
     System.out.print(temp+"=");
 	for(int k=i-1;k>0;k--) {
@@ -189,8 +188,23 @@ public static void decimalToBinary(int no) {
 		}
 	}
 }
+public static String decimal2Bin(int no) {
+	int[] array=new int[20];
+	int i=0,j;
+	int temp=no;
+	while(no>0) {
+	int r=no%2;
+	   array[i++]=r;
+		no=no/2;
+	} 
+	System.out.print("binary number"+"=");
+	for(j=i-1;j>=0;j--) {
+		System.out.print(array[j]);
+	}
+	return null;
+}
 
- /*public static void twosPowerBinary(int[] array,int no) {
+ public static void twosPowerBinary(int[] array,int no) {
 	int temp=no;
 	int i=0;
 	 decimalToBinary(no);
@@ -202,28 +216,8 @@ public static void decimalToBinary(int no) {
 				System.out.print(""+z+"+");
 			}
  }
-} */
- public static void nibbleBinaryProgram(int no) {
-	 int[] array=new int[20];
-		int i=0,j;
-		//int temp=no;
-		while(no>0) {
-		int r=no%2;
-		   array[i++]=r;
-			no=no/2;
-		//System.out.println(array[--i]);
-			
-		} 
-		
-		int l=i;
-		if(l<=8) {
-	     for( j=0;j<4;j++) {
-	    	 int [] left=new int[4];
-	    	left[j] =array[i];
-	    	System.out.println(left[j]);
-	     }
-	     }
- }
+} 
+
  public static void squareRootnewton(int no) {
 	 double epsilon=1e-15;
 	 double t=no;
@@ -284,4 +278,51 @@ public static void merge(int[] array,int p,int q,int r) {
 public static void findNumber(int N) {
 	
 }
+
+public static void nibbleBinaryProgram(String str) {
+	int l=str.length();
+	String str1=str;
+	
+	if(l<8) {
+		while(str1.length()!=8) {
+			str1="0"+str1;
+		}
+		//char[] array1=str1.toCharArray();
+	}else {
+		if(l<16) {
+			while(str1.length()!=16) {
+				str1="0"+str1;
+			}
+		}
+	}
+	System.out.println("After append zero");
+	char[] array=str1.toCharArray();
+	for(int i=0;i<8;i++) {
+		System.out.print(array[i]+" ");
+	}
+	System.out.println();
+	//System.out.println("before swapping:");
+	char temp;
+	for(int i=0;i<4;i++) {
+		temp=array[i];
+		array[i]=array[i+4];
+		 array[i+4]=temp;
+	}
+	int i;
+	System.out.println("after swapping:");
+	for(i=0;i<8;i++) {
+		System.out.print(array[i]+" ");
+	}	
+	System.out.print("=");
+	for(int z=i-1;z>=0;z--) {
+		if(array[z]=='1') {
+			int y=(int)Math.pow(2,z);
+			System.out.print(""+y+"+");
+		}
+	}
+	
+	
+	}
+	
 }
+

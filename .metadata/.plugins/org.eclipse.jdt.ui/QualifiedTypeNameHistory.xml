@@ -5,5 +5,9 @@
 <fullyQualifiedTypeName name="com.bridgeit.utility.Queue1"/>
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="com.bridgeit.utility.LinkedList1.Node"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="com.bridgeit.utility.Utility"/>
+<fullyQualifiedTypeName name="org.omg.Messaging.SyncScopeHelper"/>
 </qualifiedTypeNameHistroy>

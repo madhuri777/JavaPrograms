@@ -10,7 +10,7 @@ public class OrderedList {
 
 	public static void main(String[] args)throws Exception {
 		Utility utility=new Utility();
-		LinkedList1 <Integer>list= new LinkedList1();
+		LinkedList1<Integer>list= new LinkedList1<Integer>();
      Scanner sc=new Scanner(new FileReader("orderlist.txt"));
     
      int i=0;
@@ -18,11 +18,13 @@ public class OrderedList {
     	 i++;
     	 sc.next();
      }
+ 	//sc.close();
     Scanner sc1=new Scanner(new FileReader("orderlist.txt"));
     Integer[] array=new Integer[i];
     for(int j=0;j<i;j++) {
     	array[j]=sc1.nextInt();
     }
+	//sc1.close();
     Utility.insertionSort(array);
     System.out.println("after sorting");
     int k=0;
@@ -42,5 +44,6 @@ public class OrderedList {
 		list.remove(value,flag);
 		list.show();
 	}
+
 
 }
