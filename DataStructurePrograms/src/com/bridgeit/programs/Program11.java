@@ -6,7 +6,7 @@ public class Program11 {
 
 	public static void main(String[] args) {
 		Utility utility=new Utility();
-		System.out.println("print the prime number in 1 to 1000");
+		System.out.println("Enter N");
 		int n=utility.inputInteger();
 		Utility.prime2D(n);
 		

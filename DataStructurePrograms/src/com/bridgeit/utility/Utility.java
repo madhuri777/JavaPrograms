@@ -1,7 +1,9 @@
 package com.bridgeit.utility;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 public class Utility {
 	static Scanner scanner;
@@ -179,7 +181,6 @@ public class Utility {
 	public static void prime2D(int n) {
 		Utility utility=new Utility();
 		int[] array1=new int[168];
-		System.out.println(1111);
 		int count=0;
 		int i,z=0;
 		for(i=2;i<n;i++){
@@ -193,13 +194,14 @@ public class Utility {
 			array1[z++]=i;
 		}			
 		}
+		System.out.println();
 		System.out.println("print all prime numbers");
 		for(int k=0;k<168;k++) {
 			System.out.print(array1[k]+" ");
 		}
 		//Utility.twoDarray(array1);	
-		//Utility.anagram2D(array1);
-		Utility.stackPrime(array1);
+		Utility.anagram2D(array1);
+		
 	}
 	/**
 	 * @param n
@@ -210,18 +212,21 @@ public class Utility {
 		int k=0;
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<25;j++) {
-				if(n[k]<z) {
+				if(n[k]<(z*(i+1))) {
 					array[i][j]=n[k++];
 				}else {
-					z=z+100;
+					//z=z+100;
 					break;
 				}
 			}
 		}
+		System.out.println();
 		System.out.println("prime numbers are in 2D:  ");
 		for(int x=0;x<10;x++) {
-			for(int y=0;y<22;y++) {
+			for(int y=0;y<25;y++) {
+				if(array[x][y]>0) {
 				System.out.print(" "+array[x][y]+"   ");
+				}
 			}
 			System.out.println(" ");
 		}
@@ -353,15 +358,20 @@ public class Utility {
 		}
 	}
 	
+	/**
+	 * @param array1
+	 */
 	public static void anagram2D(int[] array1) {
-		Utility utility=new Utility();
+		TreeSet<Integer> set=new TreeSet<Integer>();
 		int[] ary=new int[168];
 		boolean flag=false;
 		int k=0;
+		int z=0;
+		int y=0;
 		for(int i=0;i<=array1.length;i++) {
 			for(int j=i+1;j<array1.length-2;j++) {
-				int z=array1[i];
-				int y=array1[j];
+			        z=array1[i];
+				    y=array1[j];
 				flag=Utility.anagramNumber(z,y);
 				if(flag==true) {
 					ary[k++]=z;
@@ -369,13 +379,17 @@ public class Utility {
 				}
 			}
 		}
-		System.out.println("\n");
-		System.out.println("Number which are angram and prime:");
-		for(int q=0;q<array1.length;q++) {
-		   System.out.print(""+ary[q]+" ");
+		System.out.println(ary.length);
+		for(int i=0;i<ary.length;i++) {
+			set.add(ary[i]);
 		}
-		//utility.twoDarray(ary);
-		//utility.stackPrime(ary);
+		Iterator<Integer> it=set.iterator();
+		System.out.println("Prime ANd anagram:");
+		int i=0;
+		while(it.hasNext()) {
+			ary[i++]=(int)it.next();
+		}
+		Utility.queuePrime(ary);
 			}
 	
 	/**
@@ -383,32 +397,13 @@ public class Utility {
 	 */
 	public static void stackPrime(int []  aray) {
 		StackLinkedList lt=new StackLinkedList();
-		int l=aray.length;
-		/*for(int i=0;i<l-1;i++) {
-			System.out.println("in stack:");
-			lt.push(aray[i]);
-		}
-		System.out.println("Stack with Prime and Palindrom Number:");
-			lt.display();*/	
-		int[] ary=new int[168];
-		boolean flag=false;
-		int k=0;
-		for(int i=0;i<=aray.length;i++) {
-			for(int j=i+1;j<aray.length-2;j++) {
-				int z=aray[i];
-				int y=aray[j];
-				flag=Utility.anagramNumber(z,y);
-				if(flag==true) {
-					lt.push(z);
-					lt.push(z);
-					//ary[k++]=z;
-					//ary[k++]=y;
-				}
+		for(int i=0;i<=aray.length-1;i++) {
+				lt.push(aray[i]);
 			}
-		}
-		System.out.println("disply:");
+		System.out.println();
+		System.out.print("Display stack::  ");
 		lt.display();
-	}
+		}
 	
 		
 	/**
@@ -433,9 +428,7 @@ public class Utility {
 		String s1=String.valueOf(a);
 		String s2=String.valueOf(b);
 		String str=s1.replace(" ","");
-		//System.out.println(str);
 		String str2=s2.replace(" ","");
-		//System.out.println(str2);
 		boolean flag=false;
 		if(str.length()!=str2.length()) {
 			flag=false;
@@ -447,13 +440,46 @@ public class Utility {
 			flag=Arrays.equals(array1, array2);
 		}
 		if(flag) {
-			//System.out.println(" Are Anagram");
 			return true;
 		}else {
-			//System.out.println("are not angram");
 			return false;
 			
 		}
+	}
+	/**
+	 * @param array
+	 */
+	public static void queuePrime(int[] array) {
+		Queue1 queue=new Queue1();
+		for(int i=0;i<=array.length-1;i++) {
+			queue.enQueue(array[i]);	
+		}
+		System.out.println();
+		System.out.print("Display queue::  ");
+		queue.show();
+		
+	}
+	
+	/**
+	 * @param n
+	 */
+	public static void binaryTree (int n) {
+		int k=0,z=0,x,e;
+		int Ans=0;
+		k=factorial(2*n);
+	
+		z=factorial((n+1));
+		x=factorial(n);
+		 Ans=k/(z*x);
+		 System.out.println(" "+Ans);
+		
+	}
+	public static int factorial(int i) {
+		int fact=1;
+		for(int j=i;j>0;j--) {
+			fact=fact*j;
+		}
+		return fact;
 	}
 	}
 	

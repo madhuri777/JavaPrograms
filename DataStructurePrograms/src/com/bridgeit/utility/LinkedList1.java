@@ -7,6 +7,7 @@ public class LinkedList1<T> {
 	 }
 	 Node head;
 	 public <T> void add(T value) {
+		 //System.out.println("yes we are addng"+"\n");
 		 Node node=new Node();
 		 node.data=value;
 		 node.next=null;

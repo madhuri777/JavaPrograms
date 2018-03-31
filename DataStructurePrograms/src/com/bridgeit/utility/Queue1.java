@@ -59,5 +59,8 @@ public class Queue1 {
 		 //System.out.println(node1.data);
 		 //System.out.println("total words are:"+(count+1));
 	 }
+	public void search(int key) {
+		
+	}
 
 }

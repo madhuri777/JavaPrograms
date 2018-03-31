@@ -9,7 +9,7 @@ public class Program13 {
 		System.out.println("Enter the number:");
 		int n=utility.inputInteger();
 		Utility.prime2D(n);
-		//Utility.stackPrime();
+		
 	}
 
 }
