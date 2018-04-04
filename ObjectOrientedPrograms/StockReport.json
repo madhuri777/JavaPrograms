@@ -1,0 +1,19 @@
+{
+	"Companies": [
+		{
+			"name": "Tcs",
+			"NoOfShares": 5,
+			"SharePrice": 500
+		},
+		{
+			"name": "L&T",
+			"NoOfShares": 4,
+			"SharePrice": 400
+		},
+		{
+			"name": "Google",
+			"NoOfShares": 9,
+			"SharePrice": 600
+		}
+	]
+} 

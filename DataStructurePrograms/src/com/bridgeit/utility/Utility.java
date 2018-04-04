@@ -1,7 +1,11 @@
 package com.bridgeit.utility;
 
+import java.io.File;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
+//import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeSet;
 
@@ -67,19 +71,19 @@ public class Utility {
 		for(int j=0;j<exp.length();j++) {
 			if(exp.charAt(j)=='('||exp.charAt(j)==')') {
 				 data=exp.charAt(j);
-				 System.out.println("push "+data);
+				// System.out.println("push "+data);
 				st.push(data);
 			}
 		}
 		int opn=0,cls=0;
-		System.out.println("pop all elements:");
+		//System.out.println("pop all elements:");
 		while(!(st.isEmpty())) {
 			char data1=st.pop(data);
 			if(data1=='(') {
-				System.out.println("pop "+data1);
+				//System.out.println("pop "+data1);
 			 opn++;
 			}else {
-				System.out.println("pop "+data1);
+				//System.out.println("pop "+data1);
 				cls++;
 		}
 			}
@@ -179,8 +183,8 @@ public class Utility {
 	 * 
 	 */
 	public static void prime2D(int n) {
-		Utility utility=new Utility();
-		int[] array1=new int[168];
+		//Utility utility=new Utility();
+		int[] array1=new int[300];
 		int count=0;
 		int i,z=0;
 		for(i=2;i<n;i++){
@@ -199,8 +203,8 @@ public class Utility {
 		for(int k=0;k<168;k++) {
 			System.out.print(array1[k]+" ");
 		}
-		//Utility.twoDarray(array1);	
-		Utility.anagram2D(array1);
+		Utility.twoDarray(array1);	
+		//Utility.anagram2D(array1);
 		
 	}
 	/**
@@ -238,10 +242,16 @@ public class Utility {
 	 */
 	public static void bankAccount() {
 		Utility utility=new Utility();
-		int ppl=0;
-		int ch2=0;
-		QueueNo4<Integer> qu=new QueueNo4<Integer>();
-		while(ch2!=4) {
+		BankQueue<Integer> qu=new BankQueue<Integer>();
+		int size=0;
+		System.out.println("Add number of people in queue: ");
+		int no=utility.inputInteger();
+		for(int i=0;i<no;i++) {
+			qu.enqueue(i);
+		}
+		 size=qu.size();
+       // int ch2=0;
+		 for(int i=0;i<size;i++){
 			System.out.println("choose what you wants to do");
 		System.out.print("1.Deposite  ");
 		System.out.print("2.WithDrow  ");
@@ -253,20 +263,21 @@ public class Utility {
 	    case 1:
 	    	System.out.println("enter the amount that you wants to deposite:");
 	    	int amt=utility.inputInteger();
-	    	QueueNo4.balance1(amt);
-	    	qu.enqueue(ppl);
+	    	BankQueue.deposit(amt);
+	    	qu.dequeue(size);
 	    	System.out.println();
 	    	break;
 	    case 2:
 	    	System.out.println("Enter amount that you wants to Dithdraw");
 	    	int amt1=utility.inputInteger();
-	    	QueueNo4.balance2(amt1);
-	    	qu.dequeue(ppl);
+	    	BankQueue.withdraw(amt1);
+	    	qu.dequeue(size);
 	    	System.out.println();
 	    	break;
 	    case 3:
 	    	System.out.println("checkbalance :");
-	    	QueueNo4.checkBalance();
+	    	BankQueue.checkBalance();
+	    	qu.dequeue(size);
 	    	System.out.println();
 
 	    	break;
@@ -277,40 +288,51 @@ public class Utility {
     	System.out.println();
     	System.out.println();
 	}
-	       	
-	}
+		}
+		
+	
 	
 	/**
 	 * @param str
 	 */
 	public static void palindromChecker(String str) {
+		
 		QueuePalindrom p=new QueuePalindrom();
 		int l=str.length();
+		System.out.println("lenght of string is "+l);
 		char[] array=str.toLowerCase().toCharArray();
-		for(int i=0;i<l;i++) {
+		int l1=array.length;
+		System.out.println("array lenght is: "+l1);
+		for(int i=0;i<l1;i++) {
 			p.enqueue(array[i]);	
 		}
-		p.show();
-		char data0,data1;
-	    boolean flag=false;
-	    
-	    while(p.size()>1) {
-		data0=p.frontremove();
-		data1=p.rearRemove();
 		
-		if(data0==data1) {
-			flag=true;
+		int size=p.size();
+		//System.out.println(size);
+		
+		char data0;
+		char data1;
+		boolean flag=false;
+		while(p.size()>1) {
+		data0=p.frontremove();
+		//System.out.println(size);
+		data1=p.rearRemove();
+		//System.out.println(size);
+		
+		if(data0!=data1) {
+			//System.out.println("Are not palindrom");
+			flag=false;
 			break;
 		}else {
-			flag=false;
+			flag=true;
 		}
-	} 
-	if(!flag) {
-		System.out.println("is not palindrom");
-	}else {
-		System.out.println("this is palindrom");
-	}
 	
+	}if(flag==true) {
+		System.out.println("Palindrom: ");
+	}else {
+		System.out.println("Not palindrom: ");
+	}
+		
 	}
 	/**
 	 * @param month
@@ -318,7 +340,7 @@ public class Utility {
 	 */
 	public static void calenderStack(int month,int year) {
 		Stack1 stk=new Stack1();
-		Stack1 stk2=new Stack1();
+		//Stack1 stk2=new Stack1();
 		String[] mth={
 				"","january","February","March","April","May","June","July","Agust","September","October","November","December"
 		};
@@ -464,7 +486,7 @@ public class Utility {
 	 * @param n
 	 */
 	public static void binaryTree (int n) {
-		int k=0,z=0,x,e;
+		int k=0,z=0,x;
 		int Ans=0;
 		k=factorial(2*n);
 	
@@ -481,6 +503,91 @@ public class Utility {
 		}
 		return fact;
 	}
+	
+	
+	/**
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	public static void HashingFunction()throws Exception {
+		Utility utility=new Utility();
+		Scanner sc=new Scanner(System.in);
+	    File file = new File("HashFunction.txt");
+	    sc = new Scanner(file);
+
+	   LinkedList<Integer> list = new LinkedList<>();
+	     while (sc.hasNext()) {
+		     Integer no = sc.nextInt();
+		     list.add(no);
+	   }
+	     
+	System.out.println("size is"+list.size());
+
+	//list.sort(null);
+	@SuppressWarnings("rawtypes")
+	HashMap<Integer, LinkedList> hashmap = new HashMap<>();
+	int rem = 0;
+	int data = 0;
+	for (int i = 0; i < list.size(); i++) {
+		data = list.get(i);
+
+		rem = data % 11;
+		if (hashmap.containsKey(rem)) {
+			hashmap.get(rem).add(data);
+		} else {
+			hashmap.put(rem, new LinkedList<>());
+
+			hashmap.get(rem).add(data);
+		}
+
 	}
+	System.out.println("size is 2:"+list.size());
+	try {
+
+		Iterator<?> iterator = (Iterator<?>) hashmap.keySet().iterator();
+	
+		while (iterator.hasNext()) {
+			int key = (int)iterator.next();
+			System.out.print(key);
+			System.out.println(hashmap.get(key));
+
+		}
+		
+		
+		System.out.println("size is 3:"+list.size());
+		System.out.println("enter target to search");
+		Integer target1 = utility.inputInteger();
+		
+		if (list.contains(target1)) {
+			System.out.println("element is found and delete it");
+			//System.out.println(list.remove(target1));
+			hashmap.get(rem).remove(target1);
+		} else {
+			System.out.println("element is not found and add it");
+			System.out.println(list.add(target1));
+			rem=target1%11;
+			if(hashmap.containsKey(rem)) {
+				hashmap.get(rem).add(target1);
+			}else {
+				hashmap.put(rem,new LinkedList());
+				hashmap.get(rem).add(target1);
+			}
+
+		}
+		Iterator<?> iterator1 = hashmap.keySet().iterator();
+		
+		while (iterator1.hasNext()) {
+			int key = (int)iterator1.next();
+			System.out.print(key);
+			System.out.println(hashmap.get(key));
+
+		}
+
+	} catch (Exception e) {
+		System.out.println("exception");
+	}
+}
+}
+
 	
 

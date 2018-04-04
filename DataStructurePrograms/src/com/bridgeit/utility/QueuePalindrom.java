@@ -1,58 +1,49 @@
 package com.bridgeit.utility;
 
 public class QueuePalindrom {
+	
 	char[] queue=new char[20];
-    int size;
+    static int size=0;
     int front=0;
     int rear=0;
+    
     public void enqueue(char data) {
-    	System.out.print("inserted:  ");
+    	
    	 queue[rear]=data;
    	 System.out.println(queue[rear]);
    	  rear++;
-   	   size++;
-    }
-    
-    public void frontDequeu(int f,int l) {
-    	int front =f;
-    	int rear=l;
-    	char value1=queue[front];
-    	front++;
-    	char value2=queue[rear];
-    	if(value1==value2&&front>rear) {
-    		front++;
-    		rear--;
-    	}else {
-    		System.out.println("String is not palindrom");
-    	}
+   	size++;
+   	   System.out.println("size is "+size+" rear is "+rear);
+   	
     }
     public char frontremove() {
-    	//System.out.println(size);
+    	System.out.println(size+"in front");
     	char data;
     	data=queue[front];
     	front++;
-    	size--;
+    	//size--;
     	return data;
     }
     public char rearRemove() {
-    	rear=size;
+    	size--;
+    	rear--;
+    	System.out.println(size+"in rear");
     	char data2;
     	data2=queue[rear];
-    	rear--;
-    	size--;
+      	
     	return data2;
     }
     
     
     public void show() {
    	 int i;
-   	 for(i=front;i<=rear;i++) {
+   	 for(i=0;i<=rear-1;i++) {
  
-   	 System.out.print(queue[i]+"  ");
+   	 System.out.print(i+" "+queue[i]+"  ");
     }
     }
     public int size() {
-    	System.out.println(size);
+    //	System.out.println(size);
     	return size;
     }
 }

@@ -1,5 +1,6 @@
 package com.bridgeit.programs;
 
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Scanner;
@@ -39,9 +40,10 @@ public class UnOrderedList1 {
 		}
 		list.show();
 		/*FileWriter fw=new FileWriter("www.txt");
-		fw.write();
-		fw.flush();
-		fw.close();
+		BufferedWriter bw=new BufferedWriter(fw);
+		bw.write(list.toString());
+		bw.flush();
+		bw.close();
 		list.show();*/
 	}
 

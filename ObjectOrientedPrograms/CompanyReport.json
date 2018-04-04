@@ -1,0 +1,13 @@
+{
+	"Symbole": "@",
+	"NoOfShares": 10,
+	"SharePrice": 200
+} {
+	"Symbole": "!",
+	"NoOfShares": 20,
+	"SharePrice": 150
+} {
+	"Symbole": "#",
+	"NoOfShares": 15,
+	"SharePrice": 300
+}

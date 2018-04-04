@@ -1,13 +1,13 @@
 package com.bridgeit.programs;
 
 import java.io.FileWriter;
-import java.io.IOException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class JsonSimplWriteExample {
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws Exception {
 		JSONObject obj=new JSONObject();
 		obj.put("Name","Madhuri");
@@ -20,7 +20,7 @@ public class JsonSimplWriteExample {
 		
 		obj.put("messages",obj2);
 		
-		try(FileWriter file=new FileWriter("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/src/com/bridgeit/programs/JSONFIRST.txt")){
+		try(FileWriter file=new FileWriter("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/JSONFIRSTFILE.json")){
 			file.write(obj.toJSONString());
 			file.flush();
 		}catch(Exception e) {

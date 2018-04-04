@@ -75,8 +75,8 @@ public class LinkedList1<T> {
 	  Node n=head;
 	  Node pre=new Node();
 	  if(head==null) {
-		  head.data=n.data;
-		  n.next=head.next;
+		  head.data=newnode.data;
+		  newnode.next=head.next;
 	  }else {
 		   
 		  while(n!=null&&(number).compareTo(n.data)>0) {

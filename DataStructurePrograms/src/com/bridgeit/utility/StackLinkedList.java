@@ -11,8 +11,9 @@ public class StackLinkedList {
 	}
 	
   LinkedList1<Integer> list=new LinkedList1<Integer>();
+  
    public void push(int data) {
-	   System.out.println("i m here"+data);
+	 //  System.out.println("i m here"+data);
 	   Node newNode=new Node();
 	   newNode.data=data;
 	   if(top==null) {
