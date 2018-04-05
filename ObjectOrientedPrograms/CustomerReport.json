@@ -1,0 +1,17 @@
+[
+	{
+		"NoOfShares": 26,
+		"balance": 2550,
+		"Name": "abc"
+	},
+	{
+		"NoOfShares": 10,
+		"balance": 3200,
+		"Name": "madhuri"
+	},
+	{
+		"NoOfShares": 30,
+		"balance": 3000,
+		"Name": "pooja"
+	}
+]

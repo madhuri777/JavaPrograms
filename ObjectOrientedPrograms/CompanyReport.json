@@ -1,13 +1,17 @@
-{
-	"Symbole": "@",
-	"NoOfShares": 10,
-	"SharePrice": 200
-} {
-	"Symbole": "!",
-	"NoOfShares": 20,
-	"SharePrice": 150
-} {
-	"Symbole": "#",
-	"NoOfShares": 15,
-	"SharePrice": 300
-}
+[
+	{
+		"Symbole": "@",
+		"SharePrice": 200,
+		"NoOfShares": 20
+	},
+	{
+		"Symbole": "!",
+		"SharePrice": 150,
+		"NoOfShares": 30
+	},
+	{
+		"Symbole": "#",
+		"SharePrice": 300,
+		"NoOfShares": 10
+	}
+]
