@@ -37,11 +37,12 @@ public class LinkedList1<T> {
 			Node node1=head;
 			 while(node1.next!=null) {
 				 count++;
-				 System.out.println(node1.data);
+				 System.out.print(node1.data+"  ");
 				 node1=node1.next;
 			 }
-			 System.out.println(node1.data);
-			 System.out.println("total words are:"+(count+1));
+			 System.out.print(node1.data);
+			 //System.out.print("\t");
+			// System.out.println("total words are:"+(count+1));
 		 }
 		 @SuppressWarnings("hiding")
 		public <T> int search(T item) {

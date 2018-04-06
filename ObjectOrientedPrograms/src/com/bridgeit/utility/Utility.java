@@ -158,9 +158,9 @@ public class Utility {
 	}
 	
 	
-	public static boolean contactNumberValidation(int phoneNo){
+	public static boolean contactNumberValidation(String phoneNo){
 		
-        return Pattern.matches("[789][0-9]*{9}", String.valueOf(phoneNo));
+        return Pattern.matches("[789][0-9]*{9}", phoneNo);
 		
 	}
 	
@@ -178,34 +178,39 @@ public class Utility {
 		System.out.println("Enter the Fullname: ");
 		String name=utility.inputStringLine();
 		boolean flag=nameValidation(name);
-		System.out.println("flag is: "+flag);
-		System.out.println("Enter contact number: ");
-		int phoneNo=utility.inputInteger();
-		boolean flag1=contactNumberValidation(phoneNo);
-		System.out.println("flag1 is: "+flag1);
+	
+		String[] fname=name.split("\\s");
 		
-		if(flag==true) {
-			String[] firstname=name.split("\\s");
-			System.out.println(firstname[0]);
-			 msg=message.replace("<<name>>",firstname[0]);
-			 msg=message.replace("<<<fullname>>", name);
-			 msg=message.replace("xxxxxxxxxx", String.valueOf(phoneNo));
-			 System.out.println(msg);
+		
+		System.out.println("Enter contact number: ");
+		String phoneNo=utility.inputString();
+
+		boolean flag1=contactNumberValidation(phoneNo);
+		
+		
+		if(flag==true&&flag1==true) {
+			
+			msg=message.replace("<<name>>",fname[0].toString());
+			
+			msg=msg.replace("<<fullname>>",name);
+			
+			 msg=msg.replace("xxxxxxxxxx", phoneNo.toString());
+			
+			 
+			 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy ");  
+			    Date date = new Date();  
+			     formatter.format(date);  
+		
+			msg=msg.replace("01/01/2016",formatter.format(date));
+			System.out.println(msg);
+			 
+			 
 		}else {
-			System.out.println("please enter full name,First letter should be capital");
+			System.out.println("please enter full name,First letter should be capital And correct phone number");
 		}
 		
-		System.out.println("enter the contact number: ");
-		long number=utility.inputInteger();
 		
-		String pattern="DD-MM-YYYY";
-		SimpleDateFormat sm=new SimpleDateFormat(pattern);
-		String dt=sm.format(new Date());
 		
-//		java.util.Date dt=new java.util.Date();
-		System.out.println(dt);
-		msg=message.replace("01/01/2016",dt );
-		System.out.println(msg);
 		
 	}
 	
@@ -468,15 +473,13 @@ public class Utility {
 			System.out.println(e);
 		}		
 }
+	
 	@SuppressWarnings({"rawtypes","unused", "unchecked"})
 	public static void compnyLinkedList() throws Exception {
 		Utility utility=new Utility();
 		FileReader fr=new FileReader("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/CompanyReport.json");
 		JSONParser parser=new JSONParser();
 		JSONArray array=(JSONArray)parser.parse(fr);
-		
-		int l=array.size();
-		System.out.println("This is the size of json array: "+l);
 		
 		LinkedList1 symbol=new LinkedList1();
 		LinkedList1 price=new LinkedList1();
@@ -497,19 +500,157 @@ public class Utility {
 		   int cnt=Integer.parseInt(obj.get("NoOfShares").toString());
 		   count.add(cnt);
 		}
-		System.out.println("Symbols of companies: ");
+		System.out.print("Symbols of companies:  ");
 		symbol.show();
-		System.out.println("Price of shares: ");
+		System.out.println();
+		System.out.print("Price of shares:  ");
 		price.show();
-		System.out.println("Numbers of shres: ");
+		System.out.println();
+		System.out.print("Numbers of shares:  ");
 		count.show();
-	     addRecordInLinkedList();
+	     //addRecordInLinkedList();
 		
 	}
-	public static void addRecordInLinkedList() {
+	
+	
+	public static void addRecordInLinkedList() throws Exception {
 		Utility utility=new Utility();
+		
+		FileReader fr=new FileReader("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/CompanyReport.json");
+		JSONParser parser=new JSONParser();
+		JSONArray array=(JSONArray)parser.parse(fr);
+		
+		
+		LinkedList1 symbol=new LinkedList1();
+		LinkedList1 price=new LinkedList1();
+		LinkedList1 count=new LinkedList1();
+		
+		
+		JSONObject obj=new JSONObject();
 		System.out.println("Enter the symbol of company ");
 		String symbl1=utility.inputString();
+		symbol.add(symbl1);
+		obj.put("Symbole",symbl1);
+		
+		System.out.println("Enter the number of shares of compny: ");
+		int num=utility.inputInteger();
+		count.add(num);
+		obj.put("NoOfShares",num);
+		
+		System.out.println("Enter the price for share: ");
+		int pric=utility.inputInteger();
+		price.add(pric);
+		obj.put("SharePrice",pric);
+		//obj.put("SharePrice",price.get());
+		//obj.put(key, value)
+		array.add(obj);
+		
+		FileWriter fw=new FileWriter("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/CompanyReport.json");
+		fw.write(array.toJSONString());
+		fw.flush();
+		fw.close();
+	}
+
+	public static void deckOfCards() {
+		String [] suit= {"Clubs","Diamonds","Hearts","Spades"};
+		String [] rank= {"2","3","4","5","6","7","8","9","10","Jack","Queen","King","Ace"};
+		
+		String[] deck=new String[52];
+		
+		for(int i=0;i<rank.length;i++) {
+			for(int j=0;j<suit.length;j++) {
+				deck[suit.length*i+j]=rank[i]+" => "+suit[j];
+			}
+		}
+		
+		for(int i=0;i<52;i++) {
+			int r=(int)(Math.random()*(52-i));
+			//System.out.println("   "+r);
+			String temp = deck[r];
+            deck[r] = deck[i];
+            deck[i] = temp;
+		}
+		
+		int l=0;
+		String[][] twod=new String[4][9];
+		for(int q=0;q<4;q++) {
+			System.out.print("player: "+q);
+			for(int p=0;p<9;p++) {
+			  twod[q][p]=deck[l++];
+			  System.out.print("\t"+twod[q][p]+"\t\t");
+			}
+			System.out.println();	
+		}
+		sortQueueLinkedlist(twod);
 	}
 	
+	public static void cardesWithQueue() {
+		QueueLinkedList playr=new QueueLinkedList();
+		
+		String [] suit= {"Clubs","Diamonds","Hearts","Spades"};
+		String [] rank= {"2","3","4","5","6","7","8","9","10","Jack","Queen","King","Ace"};
+		
+		String[] deck=new String[52];
+		
+		for(int i=0;i<rank.length;i++) {
+			for(int j=0;j<suit.length;j++) {
+				deck[suit.length*i+j]=rank[i]+" => "+suit[j];
+			}
+		}
+		
+		for(int i=0;i<52;i++) {
+			int r=(int)(Math.random()*(52-i));
+			//System.out.println("   "+r);
+			String temp = deck[r];
+            deck[r] = deck[i];
+            deck[i] = temp;
+		}
+		int l=0;
+		String[][] twod=new String[4][9];
+		for(int p=0;p<4;p++) {
+			//System.out.println("player : "+p);
+			playr.enQueue("player");
+			playr.enQueue(p);
+			playr.enQueue("\t");
+			for(int q=0;q<9;q++) {
+				twod[p][q]=deck[l++];
+				playr.enQueue(twod[p][q]);
+				playr.enQueue("\t");
+				playr.enQueue("\t");
+			}
+			playr.enQueue("\n");
+		}
+		playr.show();
 }
+  /**
+ * @param twoD
+ */
+public static void sortQueueLinkedlist(String[][] twoD) {
+		QueueLinkedList playr=new QueueLinkedList();
+       System.out.println();
+	  System.out.println("After sorting in queue: ");
+	  System.out.println();
+		String [] rank= {"2","3","4","5","6","7","8","9","10","Jack","Queen","King","Ace"};
+
+		int capacity=9;
+		String[] cards=new String[capacity];
+		  for(int j=0;j<4;j++) {
+			  for(int k=0;k<9;k++) {
+				   cards[k]=twoD[j][k];
+				  }
+			
+			  for(int i=0;i<rank.length;i++) {
+				  
+			  for(int z=0;z<9;z++) {
+			  if(cards[z].charAt(0)==rank[i].charAt(0)) {
+				  playr.enQueue(cards[z]);
+				  playr.enQueue("\t");
+			  }
+			  }
+			  }
+			  playr.enQueue("\n");
+		  }
+	  playr.show();
+  }
+}
+		

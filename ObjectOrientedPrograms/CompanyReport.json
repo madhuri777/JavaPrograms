@@ -13,5 +13,10 @@
 		"Symbole": "#",
 		"SharePrice": 300,
 		"NoOfShares": 10
+	},
+	{
+		"Symbole": "**",
+		"SharePrice": 200,
+		"NoOfShares": 16
 	}
 ]
