@@ -1,17 +1,27 @@
 [
 	{
-		"NoOfShares": 26,
-		"balance": 2550,
+		"NoOfShares": 24,
+		"balance": 2950,
 		"Name": "abc"
 	},
 	{
-		"NoOfShares": 10,
-		"balance": 3200,
+		"NoOfShares": 13,
+		"balance": 2750,
 		"Name": "madhuri"
 	},
 	{
 		"NoOfShares": 30,
 		"balance": 3000,
 		"Name": "pooja"
+	},
+	{
+		"NoOfShares": 25,
+		"balance": 2000,
+		"Name": "amruta"
+	},
+	{
+		"NoOfShares": 30,
+		"balance": 2500,
+		"Name": "aakash"
 	}
 ]

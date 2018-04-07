@@ -248,7 +248,7 @@ public class Utility {
 	 */
 	public static void cummercialData() throws Exception {
 		Utility utility=new Utility();
-		System.out.println("choose the option: ");
+		System.out.println("choose the option:1.stockAccount 2.buyShares 3.sellShares 4.reportRecord ");
 		int choice=utility.inputInteger();
 		switch(choice){
 		case 1:
@@ -277,6 +277,7 @@ public class Utility {
 	 * @param symbol
 	 * @throws Exception
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void buyShares( String symbol) throws Exception {
 		Utility utility=new Utility();
 		FileReader f1=new FileReader("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/CustomerReport.json");
@@ -287,9 +288,9 @@ public class Utility {
 		JSONParser parser2=new JSONParser();
 	    JSONArray comp=(JSONArray)parser2.parse(f2);
 		
-		@SuppressWarnings("rawtypes")
+	
 		Iterator iterator1=cutm.iterator();
-		@SuppressWarnings("rawtypes")
+		
 		Iterator iterator2=comp.iterator();
 
 		System.out.println("enter the user name: ");
@@ -312,20 +313,20 @@ public class Utility {
 							int n=utility.inputInteger();
 							
 							int noOfShares=Integer.parseInt(obj.get("NoOfShares").toString());
-							System.out.println("price of share is : "+noOfShares);
+							System.out.println("number  of customershares are : "+noOfShares);
 							int bals=Integer.parseInt(obj.get("balance").toString());
 							System.out.println("customer balance "+bals);
 							
 						    int amt=Integer.parseInt(obj1.get("SharePrice").toString()); 
-						    System.out.println("price per share is : "+amt);
+						    System.out.println("price per share of compny is : "+amt);
 						    int no=Integer.parseInt(obj1.get("NoOfShares").toString());
-						    System.out.println("NoOfShare is : "+no);
+						    System.out.println("NoOf compny shares are : "+no);
 						    
 						    int totalprice=n*amt;
 						    int totalshare=noOfShares+n;
 						    int newbals=bals-totalprice;
 						    int compyshare=no-n;
-						    System.out.println("price of ompnyshare is : "+compyshare);
+						    System.out.println("nmber of compnyshare after selling is : "+compyshare);
 						   
 						   obj.remove("NoOfShares");
 						   obj.remove("balance");
@@ -352,7 +353,7 @@ public class Utility {
 		   fr.write(JSONValue.toJSONString(comp));
 		   fr.flush();
 		   fr.close();
-		
+		   cummercialData();
 		}
 		
 		
@@ -362,7 +363,7 @@ public class Utility {
 	 */
 	@SuppressWarnings("unchecked")
 	public static void sellShares(int num) throws Exception {
-		System.out.println("No of shares are "+num);
+		
 		Utility utility=new Utility();
 		FileReader fr=new FileReader("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/CompanyReport.json");
 		JSONParser parser=new JSONParser();
@@ -388,7 +389,7 @@ public class Utility {
 			JSONObject obj=(JSONObject) itrt.next();
 			
 			if(obj.get("Name").equals(name)) {
-				System.out.println("hii pointr is here ");
+				
 				while(itr.hasNext()) {
 					JSONObject obj1=(JSONObject) itr.next();
 					if(obj1.get("Symbole").equals(symbol)) {
@@ -403,13 +404,13 @@ public class Utility {
 						
 						int bal=Integer.parseInt(obj.get("balance").toString());
 						int newBalance=bal+bill;
-						System.out.println("newBalance is +"+newBalance);
+						System.out.println("newBalance of customer is +"+newBalance);
 						obj.remove("balance");
 						obj.put("balance",newBalance);
 						
 						int numofshares=Integer.parseInt(obj.get("NoOfShares").toString());
 						int newshares=numofshares-num;
-						System.out.println("remaining shares are:"+ newshares);
+						System.out.println("remaining shares of customer  are:"+ newshares);
 						obj.remove("NoOfShares");
 						obj.put("NoOfShares", newshares);	
 						break;
@@ -425,6 +426,7 @@ public class Utility {
 		   fr1.write(JSONValue.toJSONString(array));
 		   fr1.flush();
 		   fr1.close();	
+		   cummercialData();
 	}
 	
 	
@@ -471,7 +473,10 @@ public class Utility {
 			fw.close();
 		}catch(FileNotFoundException e) {
 			System.out.println(e);
-		}		
+		}
+		System.out.println("Added Succesfullly: ");
+		cummercialData();
+		
 }
 	
 	@SuppressWarnings({"rawtypes","unused", "unchecked"})
@@ -512,13 +517,14 @@ public class Utility {
 		
 	}
 	
-	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void addRecordInLinkedList() throws Exception {
 		Utility utility=new Utility();
 		
 		FileReader fr=new FileReader("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/CompanyReport.json");
 		JSONParser parser=new JSONParser();
 		JSONArray array=(JSONArray)parser.parse(fr);
+		
 		
 		
 		LinkedList1 symbol=new LinkedList1();
@@ -551,6 +557,9 @@ public class Utility {
 		fw.close();
 	}
 
+	/**
+	 * 
+	 */
 	public static void deckOfCards() {
 		String [] suit= {"Clubs","Diamonds","Hearts","Spades"};
 		String [] rank= {"2","3","4","5","6","7","8","9","10","Jack","Queen","King","Ace"};
@@ -584,6 +593,9 @@ public class Utility {
 		sortQueueLinkedlist(twod);
 	}
 	
+	/**
+	 * 
+	 */
 	public static void cardesWithQueue() {
 		QueueLinkedList playr=new QueueLinkedList();
 		
@@ -652,5 +664,300 @@ public static void sortQueueLinkedlist(String[][] twoD) {
 		  }
 	  playr.show();
   }
+
+ /**
+ * @throws Exception
+ */
+public static void addressBook() throws Exception {
+	 Utility utility=new Utility();
+	 System.out.println("Choose any option:  1.addAddress 2.editAddress 3.deletAddress 4.sortAddress 5.Exit");
+	 int ch=utility.inputInteger();
+	 switch(ch) {
+	
+	 case 1:
+		 addAddress();
+		 break;
+	
+	 case 2:
+		 editAddress();
+		 break;
+	
+	 case 3:
+		 deletAddress();
+		 break;
+	
+	 case 4:
+		 sortAddress();
+		 break;
+	 case 5:
+		 System.exit(0);
+	 }
+ }
+ 
+ /**
+ * @throws Exception
+ */
+@SuppressWarnings("unchecked")
+public static void addAddress() throws Exception {
+	 JSONParser parser=new JSONParser();
+	 FileReader fr=new FileReader("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/AddressBook.json");
+	
+	 JSONArray array=(JSONArray) parser.parse(fr);
+	 
+	 Utility utility=new Utility();
+	 JSONObject obj=new JSONObject();
+	 System.out.println("Enter First and last  name of Person: ");
+	 String name=utility.inputStringLine();
+	 String[] Firstname=name.split("\\s");
+	 obj.put("FirstName", Firstname[0] );
+	 obj.put("LastName", Firstname[1]);
+	 
+	 System.out.println("Enter the Address:  ");
+	 
+	 System.out.println("1.City name: ");
+	 String cityname=utility.inputString();
+	 obj.put("City",cityname);
+	 System.out.println("2.State name: ");
+	 String statename=utility.inputString();
+	 obj.put("State",statename);
+	 System.out.println("3.zipnumber: ");
+	 long zipnumber=(long)utility.inputInteger();
+	 obj.put("PinCode",zipnumber);
+	 
+	 array.add(obj);
+	 try(FileWriter fw=new FileWriter("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/AddressBook.json")){
+		 fw.write(array.toJSONString());
+		 fw.flush();
+		 fw.close();
+	 }catch (Exception e) {
+	     System.out.println(e);	
+	 }
+	 System.out.println("Added Successfully: ");
+	 addressBook();
+ }
+ /**
+ * @throws Exception
+ */
+@SuppressWarnings({ "rawtypes", "unchecked" })
+ public static void editAddress() throws Exception {
+	 Utility utility=new Utility();
+	 JSONParser parser=new JSONParser();
+	 FileReader fr=new FileReader("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/AddressBook.json");
+	 JSONArray array=(JSONArray) parser.parse(fr);
+	 
+	 System.out.println("Enter the person name for edit the info: ");
+	 String name=utility.inputString();
+	 
+	boolean flag=false;
+	Iterator itr=array.iterator();
+	 while(itr.hasNext()) {
+		 JSONObject obj=(JSONObject)itr.next();
+		 if(obj.get("FirstName").equals(name)) {
+			 flag=true;
+			 System.out.println("Enter the new City Name: ");
+			 String saher=utility.inputString();
+			 System.out.println("Enter State name: ");
+			 String rajje=utility.inputString();
+			 System.out.println("Enter pincode number: ");
+			 long zipnum=(long)utility.inputInteger();
+			 
+			 obj.remove("City");
+			 obj.remove("State");
+			 obj.remove("PinCode");
+			 
+			 obj.put("State",rajje );
+			 obj.put("City",saher);
+			 obj.put("PinCode", zipnum);
+			 break;
+		 }
+	 }
+			 try(FileWriter fw=new FileWriter("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/AddressBook.json")){
+					 fw.write(JSONValue.toJSONString(array));
+			         fw.flush();
+					 fw.close();
+		 }catch(Exception e) {
+			 System.out.println(e);
+	        }
+   if(flag==false) {
+	 System.out.println("no such person in addressBook: ");
+ }else {
+	 System.out.println("Edit profile succesfully: ");
+ }  
+   addressBook();
+ }
+
+ /**
+ * @throws Exception 
+ * 
+ */
+public static void deletAddress() throws Exception {
+	Utility utility=new Utility();
+	
+	FileReader fr=new FileReader("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/AddressBook.json");
+	JSONParser parser=new JSONParser();
+	JSONArray array=(JSONArray)parser.parse(fr);
+	
+	int l=array.size();
+	
+	if(l<=0) {
+		System.out.println("No any record in AddressBook: ");
+	}else {
+	Iterator itr=array.iterator();
+	System.out.println("Enter the person name to delet his/her addressbook: "); 
+	String name=utility.inputString();
+	boolean flag=false;
+	
+	while(itr.hasNext()) {
+		
+		JSONObject obj=(JSONObject)itr.next();
+		if(obj.get("FirstName").equals(name)) {
+			flag=true;
+			array.remove(obj);
+			break;
+		}
+	}
+	try(FileWriter fw=new FileWriter("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/AddressBook.json")){
+		fw.write(JSONValue.toJSONString(array));
+		fw.flush();
+		fw.close();
+	}catch(Exception e) {
+		System.out.println(e);
+	}
+	if(flag==true) {
+		System.out.println("Deleted successfully: ");
+	}else {
+		System.out.println("No such person in AddressBook: ");
+	}
+	}
+	addressBook();
+ }
+ public static void sortAddress() throws Exception {
+	 Utility utility=new Utility();
+	 System.out.println("Enter the key  by which u wants to sort address Book: 1.ByName 2.ByPinCode");
+	 int ch=utility.inputInteger();
+	 switch(ch) {
+	 case 1:
+		 System.out.println("Enter the Lastname of person: ");
+		 String name=utility.inputString();
+		 sort(name);
+		 break;
+	 case 2:
+		 break;
+	 }
+	 
+ }
+ public static void sort(String name) throws Exception, ParseException {
+	 FileReader fr=new FileReader("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/AddressBook.json");
+		JSONParser parser=new JSONParser();
+		JSONArray array=(JSONArray)parser.parse(fr);
+		
+		
+		
+ }
+ public static void cliniqueManagement() throws Exception{
+	 Utility utility=new Utility();
+	 System.out.println("Enter the option: 1.addDoctor 2.addPatient 3.takeAppointment 4.");
+	 int ch=utility.inputInteger();
+	 switch(ch) {
+	 case 1:
+		 addDoctor();
+		 break;
+	 case 2:
+		 addPatient();
+		 break;
+	 case 3:
+		 bookAppointment();
+		 break;
+	 case 4:
+		 break;
+	 }
+ }
+ 
+ /**
+ * @throws Exception
+ */
+@SuppressWarnings("unchecked")
+public static void addDoctor() throws Exception {
+	    Utility utility=new Utility();
+	    FileReader fr=new FileReader("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/AddDoctor.json");
+		JSONParser parser=new JSONParser();
+		JSONArray array=(JSONArray)parser.parse(fr);
+		
+		System.out.println("Enter the Doctor Name:  ");
+		String dname=utility.inputStringLine();
+		System.out.println("Enter the id of Doctor: ");
+		int id=utility.inputInteger();
+		System.out.println("Enter the specialization: ");
+		String spe=utility.inputString();
+		System.out.println("enter the time availability 'AM' or 'PM' or 'Both'");
+		String time=utility.inputString();
+		System.out.println("Enter the available day of week:");
+		String day1=utility.inputString();
+		//String day2=utility.inputString();
+		
+		JSONObject obj=new JSONObject();
+		//JSONObject day=new JSONObject();
+		JSONArray arr=new JSONArray();
+		obj.put("Name",dname);
+		obj.put("ID", id);
+		obj.put("Specialization",spe);
+		obj.put("TimeAvailability",time);
+		//day.put("DayAvailability", day1);
+		//day.put("DayAvailability", day2);
+		arr.add(day);
+		//array.add(arr);
+		obj.put("DayAvailability", arr);
+		array.add(obj);
+		try(FileWriter fw=new FileWriter("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/AddDoctor.json")) {
+			fw.write(array.toJSONString());
+			fw.flush();
+			fw.close();
+		}catch (Exception e) {
+			System.out.println(e);
+		}	
+		
+		System.out.println("Added Succussfully: ");
+ }
+/**
+ * @throws Exception
+ */
+@SuppressWarnings("unchecked")
+public static void addPatient() throws Exception {
+	Utility utility=new Utility();
+	FileReader fr=new FileReader("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/AddPatient.json");
+	JSONParser parser=new JSONParser();
+	JSONArray array=(JSONArray)parser.parse(fr);
+	
+	System.out.println("Enter the Patient Name:");
+	String name=utility.inputStringLine();
+	System.out.println("Give ID to the patient ");
+	int id=utility.inputInteger();
+	System.out.println("enter the Patient phone number");
+	String phoneno=utility.inputString();
+	System.out.println("Enter the age of Patient: ");
+	int age=utility.inputInteger();
+	
+	JSONObject obj=new JSONObject();
+	obj.put("P-Name",name);
+	obj.put("P-ID", id);
+	obj.put("P-ContactNo", phoneno);
+	obj.put("P-Age", age);
+	
+	array.add(obj);
+	
+	try(FileWriter fw=new FileWriter("/home/bridgeit/eclipse-works8/ObjectOrientedPrograms/AddPatient.json")){
+		fw.write(array.toJSONString());
+	    fw.flush();
+	    fw.close();
+	}catch (Exception e) {
+		System.out.println(e);
+	}
+
+	System.out.println("Patient added successfully.");
+}
+
+public static void bookAppointment() {
+	
+}
 }
 		

@@ -1,0 +1,14 @@
+[
+	{
+		"P-ContactNo": "9987654321",
+		"P-Name": "madhuri satkar",
+		"P-ID": 12,
+		"P-Age": 23
+	},
+	{
+		"P-ContactNo": "8876543210",
+		"P-Name": "sukanya",
+		"P-ID": 23,
+		"P-Age": 20
+	}
+]
