@@ -66,7 +66,7 @@ public class Utility {
 	 * @param exp
 	 */
 	public static void checkParantheses(String exp) {
-		Stack1 st=new Stack1();
+		Stackprogram st=new Stackprogram();
 		char data=' ';
 		for(int j=0;j<exp.length();j++) {
 			if(exp.charAt(j)=='('||exp.charAt(j)==')') {
@@ -76,14 +76,11 @@ public class Utility {
 			}
 		}
 		int opn=0,cls=0;
-		//System.out.println("pop all elements:");
 		while(!(st.isEmpty())) {
 			char data1=st.pop(data);
 			if(data1=='(') {
-				//System.out.println("pop "+data1);
 			 opn++;
 			}else {
-				//System.out.println("pop "+data1);
 				cls++;
 		}
 			}
@@ -153,7 +150,7 @@ public class Utility {
 	 * @param year
 	 */
 	public static void calenderQueue(int month,int year) {
-		Queue1 week=new Queue1();
+		QueueLinkedList week=new QueueLinkedList();
 		String[] mnth={
 				"","january","February","March","April","May","June","July","Agust","September","October","November","December"
 		};
@@ -307,9 +304,6 @@ public class Utility {
 			p.enqueue(array[i]);	
 		}
 		
-		int size=p.size();
-		//System.out.println(size);
-		
 		char data0;
 		char data1;
 		boolean flag=false;
@@ -339,9 +333,10 @@ public class Utility {
 	 * @param year
 	 */
 	public static void calenderStack(int month,int year) {
-		Stack1 stk=new Stack1();
+		StackLinkedList<Integer> stk=new StackLinkedList<Integer>();
+		StackLinkedList<Integer> stk1=new StackLinkedList<Integer>();
 		//Stack1 stk2=new Stack1();
-		String[] mth={
+		String[] months={
 				"","january","February","March","April","May","June","July","Agust","September","October","November","December"
 		};
 		int[] days= {
@@ -350,34 +345,31 @@ public class Utility {
 		if(month==2&&(isLeapyear(year)))
 			days[month]=29;
 		
-		System.out.println("  "+mth[month]+" "+year );
+		System.out.println("  "+months[month]+" "+year );
 		System.out.println();
 		System.out.println("sun "+"Mon "+"Tue "+"Thu "+"Fri "+"sat");
 		int d=day(month,1,year);
 		
 		for(int i=0;i<d;i++) {
 			//System.out.printf("   ");
-			stk.push(' ');
-			//stk2.pop(' ');
+			stk.push(" ");
 		}
 		for(int i=1;i<=days[month];i++) {
 			//System.out.printf("%2d ",i);
-			stk.push(' ');
-			//stk2.pop(' ');
-			//stk.push(' ');
-			//stk2.pop(' ');
-			stk.push('i');
-			//stk2.pop('i');
+			stk.push(i);
+			stk.pop();
 			if((i+d)%7==0||i==days[month]) {
 				//System.out.println(" ");
-				stk.push(' ');
-				//stk2.pop(' ');
-				
+				stk.push("\n");
+				stk.pop();
 			}
 		}
-		for(int i=days[month];i>=0;i--) {
-		//	stk2.pop(data)
-		}
+	
+		
+		stk.size();
+		stk.pop();
+		stk.size();
+		stk.display();
 	}
 	
 	/**
@@ -418,7 +410,7 @@ public class Utility {
 	 * @param aray
 	 */
 	public static void stackPrime(int []  aray) {
-		StackLinkedList lt=new StackLinkedList();
+		StackLinkedList<?> lt=new StackLinkedList();
 		for(int i=0;i<=aray.length-1;i++) {
 				lt.push(aray[i]);
 			}
@@ -472,7 +464,7 @@ public class Utility {
 	 * @param array
 	 */
 	public static void queuePrime(int[] array) {
-		Queue1 queue=new Queue1();
+		QueueLinkedList queue=new QueueLinkedList();
 		for(int i=0;i<=array.length-1;i++) {
 			queue.enQueue(array[i]);	
 		}

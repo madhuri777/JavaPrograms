@@ -1,6 +1,6 @@
 package com.bridgeit.programs;
 
-import com.bridgeit.utility.Queue1;
+import com.bridgeit.utility.QueueLinkedList;
 import com.bridgeit.utility.Utility;
 
 public class CalenderQueue {

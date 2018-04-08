@@ -1,20 +1,24 @@
 package com.bridgeit.utility;
 
-import org.omg.Messaging.SyncScopeHelper;
-
-public class StackLinkedList {
+@SuppressWarnings({"unchecked","rawtypes", "hiding"})
+public class StackLinkedList<T>{
+	
 	Node top=null;
 	int size=0;
-	public class Node{
+	
+	
+	public class Node<T>{
 		Node next;
-		int data;
+		T data;
 	}
 	
   LinkedList1<Integer> list=new LinkedList1<Integer>();
   
-   public void push(int data) {
+   
+   public <T> void push(T data) {
 	 //  System.out.println("i m here"+data);
-	   Node newNode=new Node();
+	  
+	Node newNode=new Node();
 	   newNode.data=data;
 	   if(top==null) {
 		 newNode.next=null;
@@ -26,7 +30,9 @@ public class StackLinkedList {
 	   size++;
    }
    }
-   public void pop() {
+  
+    public void pop() {
+	   System.out.println("hii");
 	   Node temp=new Node();
 	   if(top==null) {
 		   System.out.println("stack is empty: ");
@@ -42,6 +48,7 @@ public class StackLinkedList {
    public int size() {
 	   return size;
    }
+  
    public void display() {
 	   Node temp=new Node();
 	   temp=top;
