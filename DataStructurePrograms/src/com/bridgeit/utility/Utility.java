@@ -333,8 +333,8 @@ public class Utility {
 	 * @param year
 	 */
 	public static void calenderStack(int month, int year) {
-		StackLinkedList<Integer> stk = new StackLinkedList<Integer>();
-		StackLinkedList<Integer> stk1 = new StackLinkedList<Integer>();
+		StackLinkedList<String> stk = new StackLinkedList<String>();
+		StackLinkedList<String> stk1 = new StackLinkedList<String>();
 		// Stack1 stk2=new Stack1();
 		String[] months = { "", "january", "February", "March", "April", "May", "June", "July", "Agust", "September",
 				"October", "November", "December" };
@@ -361,7 +361,7 @@ public class Utility {
 			if (i < 10) {
 				stk.push(" " + i);
 			} else {
-				stk.push(i);
+				stk.push(""+i);
 			}
 
 			if ((i + d) % 7 == 0 || i == days[month]) {
@@ -376,7 +376,7 @@ public class Utility {
 			String n = (String) stk.pop();
 			// System.out.println(n);
 			stk1.push(" ");
-			stk1.push(n);
+			stk1.push(""+n);
 		}
 
 		stk.size();
