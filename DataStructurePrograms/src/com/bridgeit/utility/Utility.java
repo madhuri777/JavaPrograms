@@ -332,45 +332,58 @@ public class Utility {
 	 * @param month
 	 * @param year
 	 */
-	public static void calenderStack(int month,int year) {
-		StackLinkedList<Integer> stk=new StackLinkedList<Integer>();
-		StackLinkedList<Integer> stk1=new StackLinkedList<Integer>();
-		//Stack1 stk2=new Stack1();
-		String[] months={
-				"","january","February","March","April","May","June","July","Agust","September","October","November","December"
-		};
-		int[] days= {
-				0,31,28,31,30,31,30,31,31,30,31,30,31
-		};
-		if(month==2&&(isLeapyear(year)))
-			days[month]=29;
-		
-		System.out.println("  "+months[month]+" "+year );
+	public static void calenderStack(int month, int year) {
+		StackLinkedList<Integer> stk = new StackLinkedList<Integer>();
+		StackLinkedList<Integer> stk1 = new StackLinkedList<Integer>();
+		// Stack1 stk2=new Stack1();
+		String[] months = { "", "january", "February", "March", "April", "May", "June", "July", "Agust", "September",
+				"October", "November", "December" };
+		int[] days = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		if (month == 2 && (isLeapyear(year)))
+			days[month] = 29;
+
+		System.out.println("  " + months[month] + " " + year);
 		System.out.println();
-		System.out.println("sun "+"Mon "+"Tue "+"Thu "+"Fri "+"sat");
-		int d=day(month,1,year);
-		
-		for(int i=0;i<d;i++) {
-			//System.out.printf("   ");
-			stk.push(" ");
+		System.out.println("  sun " + " Mon " + " Tue " + " wed " + " Thu  " + " Fri  " + " sat");
+		int d = day(month, 1, year);
+
+		for (int i = 0; i < d; i++) {
+
+			stk.push("    ");
 		}
-		for(int i=1;i<=days[month];i++) {
-			//System.out.printf("%2d ",i);
-			stk.push(i);
-			stk.pop();
-			if((i+d)%7==0||i==days[month]) {
-				//System.out.println(" ");
-				stk.push("\n");
-				stk.pop();
+		/*
+		 * for(int i=1;i<=days[month];i++) { //System.out.printf("%2d ",i); stk.push(i);
+		 * //stk.pop(); if((i+d)%7==0||i==days[month]) { //System.out.println(" ");
+		 * stk.push("\n"); //stk.pop(); } }
+		 */
+		for (int i = 1; i <= days[month]; i++) {
+
+			if (i < 10) {
+				stk.push(" " + i);
+			} else {
+				stk.push(i);
 			}
+
+			if ((i + d) % 7 == 0 || i == days[month]) {
+				stk.push("\n");
+			}
+
 		}
-	
-		
+		// System.out.println("first stack");
+		// stk.display();
+		int size = stk.size();
+		for (int i = 0; i < size; i++) {
+			String n = (String) stk.pop();
+			// System.out.println(n);
+			stk1.push(" ");
+			stk1.push(n);
+		}
+
 		stk.size();
-		stk.pop();
-		stk.size();
-		stk.display();
+		// System.out.println("second stack");
+		stk1.display();
 	}
+
 	
 	/**
 	 * @param array1
