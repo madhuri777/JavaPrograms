@@ -31,18 +31,16 @@ public class StackLinkedList<T>{
    }
    }
   
-    public void pop() {
-	   System.out.println("hii");
+    public String pop() {
 	   Node temp=new Node();
 	   if(top==null) {
 		   System.out.println("stack is empty: ");
 	   }
-	   //int value=top.data;
 	   temp=top;
-	   System.out.println("delet item:"+temp.data);
+	   //System.out.print(""+temp.data);
 	   top=temp.next;
-	
-	size--;   
+	size--;  
+	return  (temp.data).toString();
    }
    
    public int size() {
