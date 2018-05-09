@@ -31,7 +31,7 @@ public class StackLinkedList<T>{
    }
    }
   
-    public String pop() {
+     public T pop() {
 	   Node temp=new Node();
 	   if(top==null) {
 		   System.out.println("stack is empty: ");
@@ -40,8 +40,9 @@ public class StackLinkedList<T>{
 	   //System.out.print(""+temp.data);
 	   top=temp.next;
 	size--;  
-	return  (temp.data).toString();
+	return  (T) (temp.data);
    }
+   
    
    public int size() {
 	   return size;
